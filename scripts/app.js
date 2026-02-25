@@ -985,25 +985,41 @@ function initChaffleEffect() {
 window.addEventListener('load', () => {
     const urlParams = new URLSearchParams(window.location.search);
     const pageUrl = urlParams.get('page');
+    const scrollTo = urlParams.get('scrollTo');
 
     if (pageUrl) {
         loadPage(decodeURIComponent(pageUrl));
+    }
+
+    // 處理 ?scrollTo=project-xxx（從子頁面直接按 BACK 返回時使用）
+    if (scrollTo) {
+        setTimeout(() => {
+            const target = document.getElementById(scrollTo);
+            if (target) {
+                const header = document.getElementById('header');
+                const headerHeight = header ? header.offsetHeight : 0;
+                const top = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                window.scrollTo({ top, behavior: 'auto' });
+            }
+        }, 100);
+        return;
     }
 
     const hash = window.location.hash;
     if (hash && hash !== '#') {
         const sectionId = hash.replace('#', '');
 
-        // 等待頁面完全渲染後再執行錨點捲動
+        // 使用 auto（立即跳轉）並縮短等待時間，
+        // 避免瀏覽器預設捲動 + JS 修正造成的可見位移
         setTimeout(() => {
             const target = document.getElementById(sectionId);
             if (target) {
                 const header = document.getElementById('header');
                 const headerHeight = header ? header.offsetHeight : 0;
                 const top = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-                window.scrollTo({ top: top, behavior: 'smooth' });
+                window.scrollTo({ top, behavior: 'auto' });
             }
-        }, 800);
+        }, 50);
     }
 });
 

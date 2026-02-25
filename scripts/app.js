@@ -1,4 +1,12 @@
 /* ====================
+   初始 URL 參數捕捉
+   必須在頂層立即執行，在 DOMContentLoaded 的 initHistoryHandler()
+   呼叫 history.replaceState() 清除 query string 之前先存起來
+   ==================== */
+const _initialScrollTo = new URLSearchParams(window.location.search).get('scrollTo');
+const _initialSection  = new URLSearchParams(window.location.search).get('section');
+
+/* ====================
    HEADER 與 FOOTER 模板
    負責為子頁面注入共用的 Header 與 Footer
    ==================== */
@@ -13,10 +21,10 @@ const headerHTML = `
         </h1>
         <nav class="nav">
             <ul class="nav-list">
-                <li><a href="../../index.html#about" class="nav-link">ABOUT</a></li>
-                <li><a href="../../index.html#achievements" class="nav-link">ACHIEVEMENTS</a></li>
-                <li><a href="../../index.html#opinion" class="nav-link">OPINION</a></li>
-                <li><a href="../../index.html#contact" class="nav-link">CONTACT</a></li>
+                <li><a href="../../index.html?section=about" class="nav-link">ABOUT</a></li>
+                <li><a href="../../index.html?section=achievements" class="nav-link">ACHIEVEMENTS</a></li>
+                <li><a href="../../index.html?section=opinion" class="nav-link">OPINION</a></li>
+                <li><a href="../../index.html?section=contact" class="nav-link">CONTACT</a></li>
             </ul>
         </nav>
         <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
@@ -26,10 +34,10 @@ const headerHTML = `
     </div>
     <nav class="mobile-menu">
         <ul class="mobile-menu-list">
-            <li class="mobile-menu-item"><a href="../../index.html#about" class="mobile-menu-link">ABOUT</a></li>
-            <li class="mobile-menu-item"><a href="../../index.html#achievements" class="mobile-menu-link">ACHIEVEMENTS</a></li>
-            <li class="mobile-menu-item"><a href="../../index.html#opinion" class="mobile-menu-link">OPINION</a></li>
-            <li class="mobile-menu-item"><a href="../../index.html#contact" class="mobile-menu-link">CONTACT</a></li>
+            <li class="mobile-menu-item"><a href="../../index.html?section=about" class="mobile-menu-link">ABOUT</a></li>
+            <li class="mobile-menu-item"><a href="../../index.html?section=achievements" class="mobile-menu-link">ACHIEVEMENTS</a></li>
+            <li class="mobile-menu-item"><a href="../../index.html?section=opinion" class="mobile-menu-link">OPINION</a></li>
+            <li class="mobile-menu-item"><a href="../../index.html?section=contact" class="mobile-menu-link">CONTACT</a></li>
         </ul>
     </nav>
 </header>`;
@@ -164,6 +172,15 @@ document.addEventListener('DOMContentLoaded', () => {
     if (isProjectPage) {
         initMobileMenu();
         initSmoothScroll();
+    }
+
+    // 在首次繪製前提前捲動（針對 ?section= 導覽）
+    // #hero 有 CSS 定義高度（28.9vw），section TOP 位置在此時已準確
+    // requestAnimationFrame 在瀏覽器第一次繪製之前執行，使用者不會看到頁頂
+    if (_initialSection) {
+        requestAnimationFrame(() => {
+            scrollToSection(_initialSection, true);
+        });
     }
 });
 
@@ -985,16 +1002,16 @@ function initChaffleEffect() {
 window.addEventListener('load', () => {
     const urlParams = new URLSearchParams(window.location.search);
     const pageUrl = urlParams.get('page');
-    const scrollTo = urlParams.get('scrollTo');
 
     if (pageUrl) {
         loadPage(decodeURIComponent(pageUrl));
     }
 
     // 處理 ?scrollTo=project-xxx（從子頁面直接按 BACK 返回時使用）
-    if (scrollTo) {
+    // 使用頂層捕捉的 _initialScrollTo，因為此時 URL 已被 initHistoryHandler 清除
+    if (_initialScrollTo) {
         setTimeout(() => {
-            const target = document.getElementById(scrollTo);
+            const target = document.getElementById(_initialScrollTo);
             if (target) {
                 const header = document.getElementById('header');
                 const headerHeight = header ? header.offsetHeight : 0;
@@ -1002,6 +1019,16 @@ window.addEventListener('load', () => {
                 window.scrollTo({ top, behavior: 'auto' });
             }
         }, 100);
+        return;
+    }
+
+    // 處理 ?section=xxx（從子頁面導覽列點擊返回時使用）
+    // 改用 query param 取代 hash，避免瀏覽器預設捲動造成卡頓
+    // 使用 scrollToSection() 確保與 SPA 內點擊的捲動位置完全一致
+    if (_initialSection) {
+        setTimeout(() => {
+            scrollToSection(_initialSection, true);
+        }, 50);
         return;
     }
 

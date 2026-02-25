@@ -7,16 +7,16 @@ const headerHTML = `
 <header id="header">
     <div class="header-inner">
         <h1 class="logo">
-            <a href="/index.html">
-                <img src="assets/home/Logo.png" alt="HUNG-LING CHEN">
+            <a href="../../index.html">
+                <img src="../../assets/home/Logo.png" alt="HUNG-LING CHEN">
             </a>
         </h1>
         <nav class="nav">
             <ul class="nav-list">
-                <li><a href="/#about" class="nav-link">ABOUT</a></li>
-                <li><a href="/#achievements" class="nav-link">ACHIEVEMENTS</a></li>
-                <li><a href="/#opinion" class="nav-link">OPINION</a></li>
-                <li><a href="/#contact" class="nav-link">CONTACT</a></li>
+                <li><a href="../../index.html#about" class="nav-link">ABOUT</a></li>
+                <li><a href="../../index.html#achievements" class="nav-link">ACHIEVEMENTS</a></li>
+                <li><a href="../../index.html#opinion" class="nav-link">OPINION</a></li>
+                <li><a href="../../index.html#contact" class="nav-link">CONTACT</a></li>
             </ul>
         </nav>
         <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
@@ -26,10 +26,10 @@ const headerHTML = `
     </div>
     <nav class="mobile-menu">
         <ul class="mobile-menu-list">
-            <li class="mobile-menu-item"><a href="/#about" class="mobile-menu-link">ABOUT</a></li>
-            <li class="mobile-menu-item"><a href="/#achievements" class="mobile-menu-link">ACHIEVEMENTS</a></li>
-            <li class="mobile-menu-item"><a href="/#opinion" class="mobile-menu-link">OPINION</a></li>
-            <li class="mobile-menu-item"><a href="/#contact" class="mobile-menu-link">CONTACT</a></li>
+            <li class="mobile-menu-item"><a href="../../index.html#about" class="mobile-menu-link">ABOUT</a></li>
+            <li class="mobile-menu-item"><a href="../../index.html#achievements" class="mobile-menu-link">ACHIEVEMENTS</a></li>
+            <li class="mobile-menu-item"><a href="../../index.html#opinion" class="mobile-menu-link">OPINION</a></li>
+            <li class="mobile-menu-item"><a href="../../index.html#contact" class="mobile-menu-link">CONTACT</a></li>
         </ul>
     </nav>
 </header>`;
@@ -566,7 +566,7 @@ async function loadPage(url) {
         const html = await response.text();
         const parser = new DOMParser();
         const doc = parser.parseFromString(html, 'text/html');
-        const bodyContent = doc.body.innerHTML;
+        const bodyContent = doc.body.innerHTML.replace(/src="\.\.\/\.\.\//g, 'src="').replace(/href="\.\.\/\.\.\//g, 'href="');
 
         STATE.isDetailView = true;
         STATE.isBackNavigating = false;

@@ -5,6 +5,7 @@
    ==================== */
 const _initialScrollTo = new URLSearchParams(window.location.search).get('scrollTo');
 const _initialSection  = new URLSearchParams(window.location.search).get('section');
+const _initialPage     = new URLSearchParams(window.location.search).get('page');
 
 /* ====================
    HEADER 與 FOOTER 模板
@@ -1000,11 +1001,8 @@ function initChaffleEffect() {
  * 頁面載入時處理 URL 參數（?page=...）與錨點捲動
  */
 window.addEventListener('load', () => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const pageUrl = urlParams.get('page');
-
-    if (pageUrl) {
-        loadPage(decodeURIComponent(pageUrl));
+    if (_initialPage) {
+        loadPage(decodeURIComponent(_initialPage));
     }
 
     // 處理 ?scrollTo=project-xxx（從子頁面直接按 BACK 返回時使用）

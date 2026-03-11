@@ -1202,6 +1202,17 @@ ul, ol {
 }
 
 /* ==================== 水平分隔線 ==================== */
+.project-text-grid + .project-double-image::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: #e0e0e0;
+    margin-top: 2.5vw;
+    margin-bottom: 0;
+    grid-column: 1 / -1;
+}
+
 .project-text-grid + .project-image-text-grid::before {
     content: '';
     display: block;

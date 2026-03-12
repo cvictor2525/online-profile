@@ -618,6 +618,8 @@ async function loadPage(url) {
         showError('Failed to load project page. Please try again.');
     } finally {
         STATE.isProjectLoading = false;
+        // 無論成功或失敗，都移除防閃爍 class，確保首頁不會永久隱藏
+        document.documentElement.classList.remove('is-loading-detail');
     }
 }
 

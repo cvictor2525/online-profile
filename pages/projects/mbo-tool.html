@@ -83,9 +83,17 @@
                 <img src="../../assets/projects/mbo-tool/mbo-4.webp" alt="專案細節圖 1" loading="lazy" decoding="async">
             </div>
             <div class="image-text-right">
-                <h3>V1自動排程邏輯圖/</h3>
+                <h3>自動排程邏輯圖/</h3>
                 <p>
-                    每週日 23:00 自動觸發，無需人工介入。Google Apps Script 啟動 weeklyScheduler 後，首先透過 Notion API 讀取各目標的結束日期，超過期限者直接略過。系統計算本週尚需新增的活動數量，呼叫 findAvailableSlot 在符合時間規則的空位中安排行程，再透過 Calendar API 將活動寫入 Google Calendar。排程完成後，LINE API 推送週報通知使用者。最後執行 syncNotionProgress，從 Calendar 統計本週各任務完成次數，透過 Notion API 回寫任務完成數與目標累計總數。
+                    每週日 23:00 自動觸發，無需人工介入。
+                <br>
+                    (1)Google Apps Script 啟動 weeklyScheduler，首先透過 Notion API 讀取各目標的結束日期，超過期限者直接略過。
+                <br>
+                    (2)系統計算本週尚需新增的活動數量，呼叫 findAvailableSlot 在符合時間規則的空位中安排行程，再透過 Calendar API 將活動寫入 Google Calendar。
+                <br>
+                    (3)排程完成，LINE API 推送週報通知用戶。
+                <br> 
+                    (4)最後執行 syncNotionProgress，從 Calendar 統計本週各任務完成次數，透過 Notion API 回寫任務完成數與目標累計總數。
                 </p>
             </div>
         </section>
@@ -96,9 +104,15 @@
                 <img src="../../assets/projects/mbo-tool/mbo-5.webp" alt="專案細節圖 1" loading="lazy" decoding="async">
             </div>
             <div class="image-text-right">
-                <h3>V1對話系統邏輯圖/</h3>
+                <h3>對話系統邏輯圖/</h3>
                 <p>
-                    以 Google Apps Script 為核心邏輯引擎，串接 LINE Bot、Gemini AI、Google Calendar 與 Notion 四大服務。使用者透過 LINE 傳送自然語言指令，經由 Webhook 推送至 GAS，GAS 將用戶訊息結合行程與規則組成 Prompt，呼叫 Gemini API 進行語意解析，Gemini 回傳結構化 JSON 指令，GAS 據此執行對應工具函式，透過 Calendar API 調整行程、Notion API 同步進度，最終經 LINE API 回覆結果。
+                    (1)以 Google Apps Script 為核心邏輯引擎，串接 LINE Bot、Gemini AI、Google Calendar 與 Notion 四大服務。
+                <br>
+                    (2)使用者透過 LINE 傳送自然語言指令，經由 Webhook 推送至 GAS，GAS 將用戶訊息結合行程與規則組成 Prompt，呼叫 Gemini API 進行語意解析。
+                <br>
+                    (3)Gemini 回傳結構化 JSON 指令，GAS 據此執行對應工具函式，透過 Calendar API 調整行程、Notion API 同步進度。
+                <br>
+                    (4)最終經 LINE API 回覆結果。
                 </p>
             </div>
         </section>

@@ -674,7 +674,9 @@ function initScrollReveal() {
         '.project-double-image',
         '.project-single-image',
         '.project-text-block',
-        '.project-two-column'
+        '.project-two-column',
+        '.project-two-image-caption',
+        '.project-single-image-caption'
     ];
 
     // 取得所有目標元素
@@ -757,7 +759,9 @@ function initScrollRevealStandalone() {
         '.project-double-image',
         '.project-single-image',
         '.project-text-block',
-        '.project-two-column'
+        '.project-two-column',
+        '.project-two-image-caption',
+        '.project-single-image-caption'
     ];
 
     const container = document.querySelector('.project-detail');

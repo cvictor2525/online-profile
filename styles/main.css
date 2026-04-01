@@ -1064,6 +1064,33 @@ ul, ol {
     object-fit: cover;
 }
 
+/* === 容器 12: Single Image Caption（單圖 + 下方文字）=== */
+.project-single-image-caption {
+    max-width: var(--project-container-width);
+    margin-inline: auto;
+    margin-top: 2.5vw;
+}
+
+.project-single-image-caption img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+.project-single-image-caption p {
+    font-family: var(--font-body);
+    font-size: 0.9vw;
+    color: var(--color-black);
+    line-height: 1.5;
+    margin-top: 1.0vw;
+    margin-bottom: 0;
+}
+
+.project-single-image-caption p:first-of-type {
+    margin-top: 1.5vw;
+}
+
 /* === 容器 7: Back Button === */
 .project-back-section {
     max-width: var(--project-container-width);
@@ -1238,6 +1265,50 @@ ul, ol {
     margin-top: 2.5vw;
     margin-bottom: 2.5vw;
     grid-column: 1 / -1;
+}
+
+.project-text-grid + .project-two-image-caption::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: #e0e0e0;
+    margin-top: 2.5vw;
+    margin-bottom: 2.5vw;
+    grid-column: 1 / -1;
+}
+
+/* === 容器 11: Two Image Caption（雙圖 1:1 + 下方文字）=== */
+.project-two-image-caption {
+    max-width: var(--project-container-width);
+    margin-inline: auto;
+    margin-top: 2.5vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 1.5vw;
+    row-gap: 0;
+}
+
+.project-two-image-caption .two-image-caption-left img,
+.project-two-image-caption .two-image-caption-right img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+.project-two-image-caption p {
+    grid-column: 1 / -1;
+    font-family: var(--font-body);
+    font-size: 0.9vw;
+    color: var(--color-black);
+    line-height: 1.5;
+    margin-top: 1.0vw;
+    margin-bottom: 0;
+}
+
+.project-two-image-caption p:first-of-type {
+    margin-top: 1.5vw;
 }
 
 /* ==================== RESPONSIVE - 手機版（768px 以下）==================== */
@@ -1771,8 +1842,38 @@ ul, ol {
         gap: var(--mobile-spacing-base);
     }
 
+    .project-two-image-caption {
+        grid-template-columns: 1fr;
+        padding: 0 var(--mobile-spacing-base);
+        column-gap: var(--mobile-spacing-base);
+        row-gap: 0;
+    }
+
+    .project-two-image-caption p {
+        font-size: var(--mobile-font-base);
+        margin-top: 16px;
+        margin-bottom: 0;
+    }
+
+    .project-two-image-caption p:first-of-type {
+        margin-top: 20px;
+    }
+
     .project-single-image {
         padding: 0 var(--mobile-spacing-base);
+    }
+
+    .project-single-image-caption {
+        padding: 0 var(--mobile-spacing-base);
+    }
+
+    .project-single-image-caption p {
+        font-size: var(--mobile-font-base);
+        margin-top: 16px;
+    }
+
+    .project-single-image-caption p:first-of-type {
+        margin-top: 20px;
     }
 
     .project-back-section {

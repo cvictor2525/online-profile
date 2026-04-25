@@ -160,6 +160,29 @@ const STATE = {
 
 // ==================== 初始化 ====================
 
+function initWipTrigger() {
+    document.querySelectorAll('.wip-trigger').forEach(el => {
+        el.addEventListener('click', e => {
+            e.preventDefault();
+            if (document.querySelector('.wip-toast')) return;
+
+            const toast = document.createElement('div');
+            toast.className = 'wip-toast';
+            toast.innerHTML = '<p>Coming Soon</p>';
+            document.body.appendChild(toast);
+
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => toast.classList.add('visible'));
+            });
+
+            setTimeout(() => {
+                toast.classList.remove('visible');
+                toast.addEventListener('transitionend', () => toast.remove(), { once: true });
+            }, 1700);
+        });
+    });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     initDOMCache();
     initMobileMenu();
@@ -167,6 +190,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initSPARouter();
     initChaffleEffect();
     initHistoryHandler();
+    initWipTrigger();
 
     // 若為專案子頁面，由模板注入 Header 後重新初始化互動功能
     const isProjectPage = document.querySelector('.project-detail') !== null;

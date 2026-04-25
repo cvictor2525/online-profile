@@ -605,7 +605,7 @@ ul, ol {
 /* === Logo PNG（絕對定位於 Complex Container 底部中心）=== */
 .ach-complex-logo {
     position: absolute;
-    height: 200px;
+    height: 100px;
     width: auto;
     left: calc(62.5vw + 2.6vw + 22.91vw / 2);
     transform: translateX(-50%);
@@ -2232,4 +2232,34 @@ mark.highlight.bold {
     color: #000000;
     margin: 0.25rem 0 0;
     line-height: 1.6;
+}
+
+/* ==================== WIP TOAST ==================== */
+.wip-toast {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    color: #111;
+    padding: 20px 36px;
+    text-align: center;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.wip-toast.visible {
+    opacity: 1;
+}
+
+.wip-toast p {
+    margin: 0;
+    line-height: 1.6;
+    font-family: var(--font-nav);
+    font-size: 14px;
+    letter-spacing: 0.05em;
 }

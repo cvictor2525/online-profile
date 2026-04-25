@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mbo/HUNGLINGCHEN</title>
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q8CFC86PRC"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-Q8CFC86PRC');
+    </script>
+    
+    <link rel="stylesheet" href="../../styles/main.css">
+</head>
+<body>
+    <!-- SPA 會載入這裡的內容 -->
+    <article class="project-detail">
+        
+        <!-- 1. Hero Image (主視覺大圖) -->
+        <section class="project-hero">
+            <img src="../../assets/projects/ppt-assistant/ppt-1.webp" alt="ppt-assistant" class="project-hero-img">
+        </section>
+        
+        <!-- 2. Page Title (頁面標題) -->
+        <section class="project-title-section">
+            <h1 class="project-title">AI工具:簡報製作助手</h1>
+        </section>
+
+<!-- 3. Text Grid with Proposal Button (雙欄文字容器 3:1 + 提案按鈕) -->
+        <section class="project-text-grid project-text-grid--proposal">
+            <div class="text-grid-left">
+                <p>
+                    這是一套能<mark class="highlight">能依簡報情境與受眾，將長篇圖文自動轉譯為近乎可交付的簡報自動化流程。</mark>不同於 LLM 簡報生成常出現的內容失焦、邏輯斷裂、版面鬆散，導致大量後期重修，此 AI 簡報助手透過分階段校正與結構控制，確保上下文一致，並匹配最合適的傳達架構與排版方式，最終產出圖文完整且可編輯的.pptx。
+                </p>
+                <p>
+                    該簡報助手處於測試優化階段，目標減少token使用量、數據視覺化，因此尚未完全封包進入系統，但仍可以此一窺目前的流程設計方式。
+                </p>
+            </div>
+            <div class="text-grid-right">
+                <div class="meta-item">
+                    <p class="meta-label">YEAR</p>
+                    <p class="meta-value">2026</p>
+                </div>
+
+                <div class="meta-item">
+                    <p class="meta-label">PROJECT</p>
+                    <p class="meta-value">簡報製作助手</p>
+                </div>
+
+                <div class="meta-item">
+                    <p class="meta-label">ROLE</p>
+                    <p class="meta-value">開發者</p>
+                </div>
+
+                <div class="meta-item">
+                    <p class="meta-label">TOOL</p>
+                    <p class="meta-value">Claude code, Obsidian, PowerPoint</p>
+                </div>
+            </div>
+        </section>      
+
+        <!-- ==================== 容器 6: Single Image ==================== -->
+        <section class="project-single-image">
+            <img src="../../assets/projects/ppt-assistant/ppt-2.webp"
+                 alt="產品原型" loading="lazy" decoding="async">
+        </section>
+
+
+        <!-- 5. Image-Text Grid (左圖右文容器 3:1) -->
+        <section class="project-image-text-grid">
+            <div class="image-text-left">
+                <img src="../../assets/projects/ppt-assistant/ppt-3.webp" alt="從原文到簡報" loading="lazy" decoding="async">
+            </div>
+            <div class="image-text-right">
+                <h3>從原文到簡報/</h3>
+                <p>
+                    使用 Claude code 建置，以 Obsidian 作為階段展示，最終以 PowerPint 輸出做後期微調， 此方式能在<mark class="highlight">可控且可預期品質的方向下，大幅降低長篇圖文製作成簡報的時間。</mark>
+                </p>
+            </div>
+        </section>
+        
+        <!-- 4. Image-Text Grid (左圖右文容器 3:1) -->
+        <section class="project-image-text-grid">
+            <div class="image-text-left">
+                <img src="../../assets/projects/ppt-assistant/ppt-4.webp" alt="Stage1 內容成果" loading="lazy" decoding="async">
+            </div>
+            <div class="image-text-right">
+                <h3>Stage1 內容成果/</h3>
+                <p>
+                    根據簡報情境，遵循通用規則＋傳達框架。
+                <br>
+                    (1)通用規則：
+                <br>    
+                    -資訊分級(主張、說明、補充等層級)
+                <br>    
+                    -禁止或限制(如重複同語意文字、標題或定錨句字數限制)
+                <br>
+                    (2)傳達框架：
+                <br>
+                    -提案型(SCQA、 ANSAVA框架等)
+                <br> 
+                    -學習型(概念、流程、比較、案例、結論等)
+                <br>
+                    -會議型(依照會議前中後，如Agenda、背景、任務、負責人、截止時間等)
+                </p>
+            </div>
+        </section>
+
+        <!-- 4. Image-Text Grid (左圖右文容器 3:1) -->
+        <section class="project-image-text-grid">
+            <div class="image-text-left">
+                <img src="../../assets/projects/ppt-assistant/ppt-5.webp" alt="Stage2 模組成果" loading="lazy" decoding="async">
+            </div>
+            <div class="image-text-right">
+                <h3>Stage2 模組成果/</h3>
+                <p>
+                    以觀看者能更直覺吸收資訊為判斷前提。
+                <br>
+                    -是否符合邏輯關聯( 並列、順序、層級、對比、因果、比例)
+                <br>
+                    -是否有視覺化必要(邏輯清晰且非純敘述)
+                <br>
+                    -選擇合適的視覺化模組方向
+                <br>
+                    -生成文字式SVG
+                </p>
+            </div>
+        </section>
+        
+                <!-- 4. Image-Text Grid (左圖右文容器 3:1) -->
+        <section class="project-image-text-grid">
+            <div class="image-text-left">
+                <img src="../../assets/projects/ppt-assistant/ppt-6.webp" alt="Stage3 排版成果" loading="lazy" decoding="async">
+            </div>
+            <div class="image-text-right">
+                <h3>Stage3 排版成果/</h3>
+                <p>
+                    遵循通用規則＋傳達框架。
+                <br>
+                    (1)通用規則：
+                <br>
+                    -核心原則(對齊、一致、層次、留白)
+                <br>
+                    -禁止或限制(畫布尺寸、頁碼規範等)
+                <br>
+                    (2)傳達框架：
+                <br>
+                    -簡約型(輕、無序)
+                <br>
+                    -資訊型(數字份量感、有序)
+                </p>
+            </div>
+        </section>
+
+                <!-- 4. Image-Text Grid (左圖右文容器 3:1) -->
+        <section class="project-image-text-grid">
+            <div class="image-text-left">
+                <img src="../../assets/projects/ppt-assistant/ppt-7.webp" alt="Stage4 配色成果" loading="lazy" decoding="async">
+            </div>
+            <div class="image-text-right">
+                <h3>Stage4 配色成果/</h3>
+                <p>
+                    輔助資訊層級，讓觀看者更快理解內容結構，遵循通用規則＋傳達框架。
+                <br>
+                    (1)通用規則：
+                <br>
+                    -核心原則(一種顏色一種語意、可讀性優先)
+                <br>
+                    -禁止或限制(超過3種色系同一頁、大面積使用螢光色)
+                <br>
+                    (2)傳達框架：
+                <br>
+                    -主色系(明確視覺方向感)
+                <br>
+                    -雙色系(呈現對比與多層次視覺)
+                </p>
+            </div>
+        </section>
+
+        <!-- 7. HOME 按鈕 -->
+        <section class="project-back-section">
+            <a href="../../index.html?scrollTo=project-mbo-tool" class="btn-home">
+                <svg width="16px" height="16px" viewBox="0 0 24 24" fill="none">
+                    <path d="M19 19L5 5M5 5h10M5 5v10" 
+                          stroke="currentColor" 
+                          stroke-width="2" 
+                          stroke-linecap="round" 
+                          stroke-linejoin="round"/>
+                </svg>
+                <span>BACK</span>
+            </a>
+        </section>
+        
+    </article>
+    <script src="../../scripts/app.js"></script>
+</body>
+</html>
